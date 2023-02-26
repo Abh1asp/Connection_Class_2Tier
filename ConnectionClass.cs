@@ -17,6 +17,11 @@ namespace _2_Tier
         }
         public int Fn_nq(string sql)
         {
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+
             cmd = new SqlCommand(sql, con);
             con.Open();
             int a = cmd.ExecuteNonQuery();
@@ -25,6 +30,11 @@ namespace _2_Tier
         }
         public string Fn_scalar(string sql)
         {
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+
             cmd = new SqlCommand(sql, con);
             con.Open();
             string s = cmd.ExecuteScalar().ToString();
@@ -33,6 +43,11 @@ namespace _2_Tier
         }
         public SqlDataReader Fn_read(string sql)
         {
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+
             cmd = new SqlCommand(sql, con);
             con.Open();
             SqlDataReader dr = cmd.ExecuteReader();
@@ -40,6 +55,11 @@ namespace _2_Tier
         }
         public DataSet Fn_ds(string sql)
         {
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+
             SqlDataAdapter da = new SqlDataAdapter(sql, con);
             DataSet ds = new DataSet();
             da.Fill(ds);
@@ -47,6 +67,11 @@ namespace _2_Tier
         }
         public DataTable Fn_dt(string sql)
         {
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+
             SqlDataAdapter da = new SqlDataAdapter(sql, con);
             DataTable dt = new DataTable();
             da.Fill(dt);

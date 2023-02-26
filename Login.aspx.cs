@@ -21,7 +21,10 @@ namespace _2_Tier
             string cid = obj.Fn_scalar(sel);
             if (cid == "1")
             {
-                Label1.Text = "Logged In";
+                string sel1 = "select Id from Reg where UserName='" + TextBox1.Text + "' and Password='" + TextBox2.Text + "'";
+                string id = obj.Fn_scalar(sel1);
+                Session["uid"] = id;
+                Response.Redirect("Profile.aspx");
             }
             else
             {
